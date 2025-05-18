@@ -1,0 +1,252 @@
+
+/* === Giao diện Hồng Đào Nhẹ === */
+body {
+  background: linear-gradient(to right, #fff1f0, #fce4ec);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  color: #3c3c3c;
+}
+
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #fddde6;
+}
+
+.note-card {
+  background-color: #ffffff;
+  border: 1px solid #f7cfd8;
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(253, 221, 230, 0.25);
+  backdrop-filter: blur(2px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.note-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(253, 221, 230, 0.4);
+}
+
+.note-container {
+  column-gap: 1.5rem;
+}
+
+.btn, .custom-btn {
+  background-color: #f78da7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.custom-btn:hover {
+  background-color: #f67291;
+  transform: scale(1.05);
+}
+
+input, textarea, select {
+  border-radius: 8px !important;
+  border: 1px solid #f7cfd8 !important;
+}
+
+.sidebar {
+  background: rgba(255, 240, 245, 0.75);
+  backdrop-filter: blur(8px);
+  border-right: 1px solid #f7cfd8;
+  padding: 1rem;
+  border-radius: 0 20px 20px 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(to right, #2c2c2c, #3a3a3a);
+    color: #e0e0e0;
+  }
+  .note-card {
+    background-color: #383838;
+    border-color: #555;
+  }
+  .navbar {
+    background-color: #2a2a2a;
+    color: #fff;
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.6s ease-out forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === Dark Mode Thủ Công + Modal + Icon === */
+
+/* === DARK MODE THỦ CÔNG === */
+body.dark-mode {
+  background: linear-gradient(to right, #2c2c2c, #3a3a3a) !important;
+  color: #e0e0e0 !important;
+}
+body.dark-mode .note-card {
+  background-color: #383838 !important;
+  border-color: #555 !important;
+}
+body.dark-mode .navbar,
+body.dark-mode .sidebar {
+  background-color: #2a2a2a !important;
+  color: white !important;
+}
+body.dark-mode .custom-btn {
+  background-color: #444 !important;
+  color: #f78da7 !important;
+}
+body.dark-mode input,
+body.dark-mode textarea {
+  background-color: #2c2c2c !important;
+  border-color: #666 !important;
+  color: #eee !important;
+}
+
+/* === HIỆU ỨNG MỞ MODAL === */
+.modal.show {
+  animation: modalFade 0.35s ease-out;
+}
+@keyframes modalFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === CHUYỂN ĐỘNG ICON === */
+i:hover {
+  animation: pulseIcon 0.6s ease;
+}
+@keyframes pulseIcon {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.sync-status {
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  margin-top: 6px;
+  user-select: none;
+  max-width: 500px;
+  word-wrap: break-word;
+}
+
+.sync-status.info {
+  background: #d0e6ff;
+  color: #1a73e8;
+}
+
+.sync-status.success {
+  background: #d4edda;
+  color: #155724;
+}
+
+.sync-status.error {
+  background: #f8d7da;
+  color: #721c24;
+}
+.sync-status {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  /* phần còn lại như bạn đã có */
+}
+
+/* Nền chung mây trôi animation */
+@keyframes cloudMove {
+  0% {
+    transform: translateX(-200px);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+.cloud {
+  position: fixed;
+  top: 10%;
+  width: 250px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50% / 40%;
+  filter: blur(8px);
+  opacity: 0.6;
+  animation: cloudMove 60s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cloud:nth-child(2) {
+  top: 20%;
+  width: 200px;
+  height: 80px;
+  animation-duration: 90s;
+  animation-delay: 30s;
+  opacity: 0.4;
+}
+
+.cloud:nth-child(3) {
+  top: 35%;
+  width: 300px;
+  height: 120px;
+  animation-duration: 70s;
+  animation-delay: 15s;
+  opacity: 0.5;
+}
+
+/* Nền home.php - màu hồng đào nhạt nhẹ nhàng */
+body.home {
+  background: linear-gradient(135deg, #ffeef0 0%, #fff5f7 100%);
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Nền index.php - giữ màu cũ nhưng thêm overlay mây */
+body.index {
+  background: linear-gradient(to right, #fff1f0, #fce4ec);
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Đổi màu nền tổng thể trang */
+body {
+  background: linear-gradient(135deg, #fce4ec, #fff1f0); /* gradient màu hồng đào pastel nhạt */
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  transition: background 0.5s ease;
+}
+
+/* Hiệu ứng chuyển gradient nền mượt mà */
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Hiệu ứng hover nhẹ cho thẻ ghi chú */
+.note-card:hover {
+  box-shadow: 0 8px 15px rgba(255, 182, 193, 0.5); /* bóng hồng nhạt nhẹ */
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+
+/* Giữ nguyên màu nền thẻ ghi chú (đã có trong source của bạn) */
